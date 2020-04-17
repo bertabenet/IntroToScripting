@@ -12,4 +12,4 @@ Apart from what is implemented in these tutorials, the following features were a
 
 - Both `Start` and `Quit` buttons are floating in the Title scene
 - You can listen to background music in both the Title and the Game scenes
-- An "error" in the tutorial was fixed: when sheeps collided with the SheepDestroyer, the counter of collision was increased by 2 for only one single sheep. The problem was that both the Sheep and the SheepDestroyer colliders collided two times in a row. Therefore, to fix the problem, a variable to know if the Sheep and the SheepDestroyer are colliding at the moment was added.
+- An "error" in the tutorial was fixed: when sheeps collided with the SheepDestroyer, the counter of collision was increased by 2 for only one single sheep. The problem was that both the Sheep and the SheepDestroyer colliders collided two times in a row. Therefore, to fix the problem, a variable to know if the Sheep and the SheepDestroyer are colliding at current time was added.
