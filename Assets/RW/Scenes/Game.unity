@@ -578,6 +578,7 @@ MonoBehaviour:
   shootClip: {fileID: 8300000, guid: afd9aad0b8c4b1141856b4808d8ea172, type: 3}
   sheepHitClip: {fileID: 8300000, guid: e97ab3d76ee31794ba31802a0f2a719e, type: 3}
   sheepDroppedClip: {fileID: 8300000, guid: d396aafd153ba394982f2aa1349363de, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 99b18eec24ce44a449fa10d357d31988, type: 3}
 --- !u!1001 &659386961
 PrefabInstance:
   m_ObjectHideFlags: 0

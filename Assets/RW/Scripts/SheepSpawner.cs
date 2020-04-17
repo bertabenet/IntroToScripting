@@ -10,11 +10,14 @@ public class SheepSpawner : MonoBehaviour
     public float timeBetweenSpawns;                                         // time between spawning
     private List<GameObject> sheepList = new List<GameObject>();            // alive sheep
 
+    public float timeToIncreaseDifficulty;                                  // time to decrease the time between spawns
+
     // Start is called before the first frame update
     void Start()
     {
         // to start a coroutine we have to do it like:
         StartCoroutine(SpawnRoutine());
+        StartCoroutine(IncreaseDifficulty());
     }
 
     // Update is called once per frame
@@ -42,7 +45,20 @@ public class SheepSpawner : MonoBehaviour
         {
             SpawnSheep();   // spawn a new sheep
             // pause the execution of this coroutine for timeBetweenSpawns seconds
-            yield return new WaitForSeconds(timeBetweenSpawns); 
+            yield return new WaitForSeconds(timeBetweenSpawns);
+        }
+    }
+
+    /*
+     * Each timeToIncreaseDifficulty seconds, the time between spawns is reduced
+     */
+    private IEnumerator IncreaseDifficulty()
+    {
+        while (canSpawn)
+        {
+            timeBetweenSpawns -= 0.1f;
+
+            yield return new WaitForSeconds(timeToIncreaseDifficulty);
         }
     }
 

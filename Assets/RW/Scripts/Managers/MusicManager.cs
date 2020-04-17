@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class MusicManager : MonoBehaviour
 {
-    public static SoundManager Instance;    // store reference of SoundManager
-
-    public AudioClip shootClip;             // shooting sound effect
-    public AudioClip sheepHitClip;          // get hit sound effect
-    public AudioClip sheepDroppedClip;      // drop sound effect
+    public static MusicManager Instance;    // store reference of SoundManager
 
     public AudioClip backgroundMusic;
 
@@ -29,21 +25,6 @@ public class SoundManager : MonoBehaviour
     {
         // play the audioclip at the camera's position
         AudioSource.PlayClipAtPoint(clip, cameraPosition);
-    }
-
-    public void PlayShootClip()
-    {
-        PlaySound(shootClip);
-    }
-
-    public void PlaySheepHitClip()
-    {
-        PlaySound(sheepHitClip);
-    }
-
-    public void PlaySheepDroppedClip()
-    {
-        PlaySound(sheepDroppedClip);
     }
 
     public void PlayBackground()

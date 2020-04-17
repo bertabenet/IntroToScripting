@@ -17,11 +17,14 @@ public class Sheep : MonoBehaviour
     public float heartOffset;           // offset in Y axis where the heart will spawn
     public GameObject heartPrefab;      // heart reference
 
+    private bool isColliding;
+
     // Start is called before the first frame update
     void Start()
     {
         myCollider = GetComponent<Collider>();
         myRigidbody = GetComponent<Rigidbody>();
+        isColliding = false;
     }
 
     // Update is called once per frame
@@ -32,6 +35,7 @@ public class Sheep : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("Hay") && !hitByHay)
         {
             Destroy(other.gameObject);  // destroy also the hay itself
@@ -39,7 +43,12 @@ public class Sheep : MonoBehaviour
         }
         else if (other.CompareTag("DropSheep"))
         {
-            Drop();
+            if (!isColliding)
+            {
+                isColliding = true;
+                Drop();
+            }
+            
         }
     }
 
@@ -67,6 +76,7 @@ public class Sheep : MonoBehaviour
 
     private void Drop()
     {
+
         sheepSpawner.RemoveSheepFromList(gameObject); // remove sheep from list
 
         myRigidbody.isKinematic = false;        // set non-kinematic to be affected by gravity
@@ -74,8 +84,9 @@ public class Sheep : MonoBehaviour
         Destroy(gameObject, dropDestroyDelay);  // destroy sheep
 
         SoundManager.Instance.PlaySheepDroppedClip();   // play sound
-
+        
         GameStateManager.Instance.DroppedSheep(); // tell the manager that a sheep is dropped
+
     }
 
     public void SetSpawner(SheepSpawner spawner)
