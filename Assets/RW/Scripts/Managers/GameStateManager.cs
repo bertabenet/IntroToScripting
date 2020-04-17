@@ -35,12 +35,16 @@ public class GameStateManager : MonoBehaviour
     public void SavedSheep()
     {
         sheepSaved++;
+
+        UIManager.Instance.UpdateSheepSaved(); // update the text of sheep saved
     }
 
     private void GameOver()
     {
         sheepSpawner.canSpawn = false;      // stop spawining sheep
         sheepSpawner.DestroyAllSheep();     // destroy all sheep
+
+        UIManager.Instance.ShowGameOverWindow(); // show game over window
     }
 
     // this method is called every time a sheep falls down
@@ -51,5 +55,7 @@ public class GameStateManager : MonoBehaviour
         {
             GameOver();
         }
+
+        UIManager.Instance.UpdateSheepDropped(); // update the text of dropped sheep
     }
 }

@@ -12,10 +12,37 @@ public class MovingHay : MonoBehaviour
     public float shootInterval;         // time between shots
     private float shootTimer;           // current time between shots
 
+    public Transform modelParent;       // the parent Transform of the model
+
+    public GameObject blueModelPrefab; 
+    public GameObject yellowModelPrefab;
+    public GameObject redModelPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
+        LoadModel();
+    }
 
+    private void LoadModel()
+    {
+        Destroy(modelParent.GetChild(0).gameObject);        // destroy current model
+
+        // instantiate a hay machine model prefab and parent it to modelParent
+        switch (GameSettings.hayMachineColor)
+        {
+            case HayMachineColor.Blue:
+                Instantiate(blueModelPrefab, modelParent);
+                break;
+
+            case HayMachineColor.Yellow:
+                Instantiate(yellowModelPrefab, modelParent);
+                break;
+
+            case HayMachineColor.Red:
+                Instantiate(redModelPrefab, modelParent);
+                break;
+        }
     }
 
     // Update is called once per frame
